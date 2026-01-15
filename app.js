@@ -1,19 +1,19 @@
 
-function Review(img, name, job, info) {
+function testimonials(img, name, job, description) {
     this.img = img;
     this.name = name;
     this.job = job;
-    this.info = info;
+    this.description = description;
 }
 
-let first = new Review(
+let first = new testimonials(
     `./asset/img1.jpg`,
     "Arham Maqsood",
     "Custom Web Application",
     `We worked with them on a custom web application for our internal operations. The team showed strong technical skills and handled all revisions professionally. The application is stable, well-structured, and easy to use`
 )
 
-let second = new Review(
+let second = new testimonials(
     `./asset/img2.jpg`,
     "Nehal",
     "Mobile App Development",
@@ -21,7 +21,7 @@ let second = new Review(
 )
 
 
-let third = new Review(
+let third = new testimonials(
     `./asset/img3.jpg`,
     "Umer",
     "Website Redesign & Maintenance",
@@ -29,12 +29,12 @@ let third = new Review(
 )
 
 
-let contructer = [first, second, third];
+let data = [first, second, third];
 
-let imgs = document.getElementById("person-img");
-let author = document.getElementById("author");
+let imgs = document.getElementById("reviewer-img");
+let reviewer = document.getElementById("reviewer");
 let work = document.getElementById("job");
-let information = document.getElementById("info");
+let information = document.getElementById("description");
 
 
 let nextBtn = document.querySelector(".next-btn");
@@ -46,17 +46,17 @@ let currentItems = 0;
 
 function load() {
 
-    let items = contructer[currentItems];
+    let items = data[currentItems];
     imgs.src = items.img;
-    author.innerText = items.name;
+    reviewer.innerText = items.name;
     work.innerText = items.job;
-    information.innerText = items.info;
+    information.innerText = items.description;
 }
 
 
 function nextItmes() {
     currentItems++;
-    if (currentItems > contructer.length - 1) {
+    if (currentItems > data.length - 1) {
         currentItems = 0;
         load();
     }
@@ -66,7 +66,7 @@ function nextItmes() {
 function prevItmes() {
     currentItems--;
     if (currentItems < 0) {
-        currentItems = contructer.length - 1;
+        currentItems = data.length - 1;
         load();
     }
 }
